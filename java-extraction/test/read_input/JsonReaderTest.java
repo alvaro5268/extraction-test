@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import model.Flat;
-
+ 
 
 public class JsonReaderTest {
 

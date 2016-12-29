@@ -1,7 +1,7 @@
 {
 	"url": "http://www.daft.ie/dublin/apartment-share/?s%5Broom_type%5D=own&s%5Bsort_by%5D=price&s%5Bsort_type%5D=d&offset=0",
 	"result": 
-	{
+	{ 
 		"extractorData": 
 		{
 			"url": "http://www.daft.ie/dublin/apartment-share/?s%5Broom_type%5D=own&s%5Bsort_by%5D=price&s%5Bsort_type%5D=d&offset=0",

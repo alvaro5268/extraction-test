@@ -1,0 +1,13 @@
+Git commands.
+# Untrack files
+git update-index --assume-unchanged java-extraction java-extraction-web web-project-test
+
+# Track files again
+git update-index --no-assume-unchanged path/to/file
+
+#3
+Create examples for JSF2 and google maps use
+
+Create a new project with JSF2 Mojarra Facets create and test JSF characteristics.
+Create a simple google maps example that allow select multiple points.
+Copy old classes in new project.

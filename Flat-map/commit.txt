@@ -5,9 +5,22 @@ git update-index --assume-unchanged java-extraction java-extraction-web web-proj
 # Track files again
 git update-index --no-assume-unchanged path/to/file
 
+#List files.
+git ls-files -o
+
+# Git ignore configuration.
+.metadata
+.recommenders
+RemoteSystemsTempFiles/
+
+# Push
+git push origin master
+
 #3
-Create examples for JSF2 and google maps use
+Create examples for JSF2 and google maps use.
 
 Create a new project with JSF2 Mojarra Facets create and test JSF characteristics.
 Create a simple google maps example that allow select multiple points.
+Create class Flat Catalog.
 Copy old classes in new project.
+Refactoring rename packages.

@@ -31,7 +31,7 @@ public class Flat {
 
 	@Override
 	public String toString() {
-		String out = "location: " + location;
+		String out = "location: " + location + "\n";
 		out += "price: " + price;
 		return out;
 

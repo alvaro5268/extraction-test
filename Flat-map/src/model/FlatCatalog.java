@@ -12,11 +12,6 @@ public class FlatCatalog {
 		this.flats = new LinkedList<Flat>();
 	}
 
-	@Override
-	public String toString() {
-		return "FlatCatalog [flats=" + flats + "]";
-	}
-
 	public List<Flat> getFlats() {
 		return this.flats;
 	}
@@ -24,5 +19,13 @@ public class FlatCatalog {
 	public void add(Flat flat) {
 		this.flats.add(flat);
 	}
+	
+	public int size(){
+		return this.flats.size();
+	}
 
+	@Override
+	public String toString() {
+		return "FlatCatalog [flats=" + flats + "]";
+	}
 }

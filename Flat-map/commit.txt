@@ -1,4 +1,7 @@
-Git commands.
+#### Git commands.
+# Show status
+git status
+
 # Untrack files
 git update-index --assume-unchanged java-extraction java-extraction-web web-project-test
 
@@ -7,6 +10,9 @@ git update-index --no-assume-unchanged path/to/file
 
 #List files.
 git ls-files -o
+
+# Delete files of the repository.
+
 
 # Git ignore configuration.
 .metadata

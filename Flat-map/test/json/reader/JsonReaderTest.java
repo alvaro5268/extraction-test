@@ -12,6 +12,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 
+import auxiliar.JsonToFlat;
 import model.Flat;
  
 
@@ -24,7 +25,7 @@ public class JsonReaderTest {
 		JsonNode rootNode;
 		try {
 			
-			rootNode = JsonReader.jsonToObject("json-input\\flats10.json");
+			rootNode = JsonToFlat.jsonFileToObject("json-input\\flats10.json");
 
 			// Extract different attributes of json-input/flats.json
 			// in order to find location and price flat (see flats.json)
@@ -37,7 +38,7 @@ public class JsonReaderTest {
 			JsonNode groupNode = dataNode.get("group");
 			
 			List<Flat> flats = new LinkedList<Flat>();
-			JsonReader.JsonObjectToFlat(groupNode,flats);
+			JsonToFlat.JsonObjectToFlat(groupNode,flats);
 
 			// Expected 10 different flats.
 			assertEquals(flats.size(), 10);
@@ -51,7 +52,7 @@ public class JsonReaderTest {
 	@Test
 	public void check20propertiesSize() throws JsonParseException, JsonMappingException, IOException {
 
-		JsonNode rootNode = JsonReader.jsonToObject("json-input\\flats20.json");
+		JsonNode rootNode = JsonToFlat.jsonFileToObject("json-input\\flats20.json");
 
 		// Extract different attributes of json-input/flats.json
 		// in order to find location and price flat (see flats.json)
@@ -69,14 +70,15 @@ public class JsonReaderTest {
 
 			JsonNode groupNode = dataNode.get("group");
 			
-			JsonReader.JsonObjectToFlat(groupNode,flats);			
+			JsonToFlat.JsonObjectToFlat(groupNode,flats);			
 
 		} // for end.
 
 		// Expected 20 different flats.
 		assertEquals(flats.size(), 20);
 
-	} // Method end.
+	} // Method end.	
+
 
 } // Class End
 

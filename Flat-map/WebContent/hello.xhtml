@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/html"	
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h:outputLabel value="#{FlatCatalogBean.toString()}"></h:outputLabel>
+	</ui:define>
+</ui:composition>
+
+<p:commandLink action="#{FlatCatalogBean.toString()}" update="afterLoad" oncomplete="afterLoad()"/>
+<h:panelGroup id="afterLoad">
+    <h:outputScript>
+    	alert("Hola");
+        function afterLoad() {    
+            alert("#{FlatCatalogBean.toString()}");
+        }
+        
+    </h:outputScript>
+</h:panelGroup>
+</html>

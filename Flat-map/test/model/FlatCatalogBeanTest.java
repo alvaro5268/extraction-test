@@ -4,27 +4,29 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class FlatCatalogTest {
+import beans.FlatCatalogBean;
+
+public class FlatCatalogBeanTest {
 
 	@Test
-	public void flatCatalog() {
-		FlatCatalog flatCatalog = new FlatCatalog() ;
+	public void flatCatalog() throws Exception {
+		FlatCatalogBean flatCatalog = new FlatCatalogBean() ;
 		assertNotNull(flatCatalog);
 	}
 	
 	@Test	
-	public void add(){
+	public void add() throws Exception{
 		Flat flat = new Flat("Dublin","500€ per month");
-		FlatCatalog flatCatalog = new FlatCatalog() ;
+		FlatCatalogBean flatCatalog = new FlatCatalogBean() ;
 		flatCatalog.add(flat);
 		assertEquals(1,flatCatalog.size());
 	}
 	
 	@Test		
-	public void get(){
+	public void get() throws Exception{
 		
 		Flat flat = new Flat("Dublin","500€ per month");
-		FlatCatalog flatCatalog = new FlatCatalog() ;
+		FlatCatalogBean flatCatalog = new FlatCatalogBean() ;
 		flatCatalog.add(flat);	
 		
 		for (Flat flatIt : flatCatalog.getFlats()) {

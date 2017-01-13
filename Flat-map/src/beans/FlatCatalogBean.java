@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import auxiliar.FlatToJson;
 import auxiliar.JsonToFlat;
 import model.Flat;
 import model.MapsGoogle;
@@ -47,6 +48,7 @@ public class FlatCatalogBean {
 		// For every flat in the catalogue calculate and set 
 		// the longitude and latitude.
 		this.calculateLateAndLongi();
+	
 
 	}
 
@@ -86,10 +88,28 @@ public class FlatCatalogBean {
 
 		return out;
 	}
+	
+	public String toJson() {
+
+		String res = "";
+		for (Flat flat : flats) {
+			res =  FlatToJson.flatObjectToJson(flat);
+		}
+		return res;
+	}	
+	
+	public String toJson2() {
+
+		String res = "";
+		res =  FlatToJson.flatListToJson(this.flats);
+		return res;
+	}	
+	/*
 
 	public static void main(String[] args) throws Exception {
 		FlatCatalogBean fcb = new FlatCatalogBean();
 		System.out.println(fcb.toString());
 	}
+	*/
 
 }

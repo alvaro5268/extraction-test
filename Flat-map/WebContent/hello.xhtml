@@ -1,17 +1,100 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://java.sun.com/jsf/html"	
+	xmlns:p="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
-		<h:outputLabel value="#{FlatCatalogBean.toString()}"></h:outputLabel>
+	
+<style>
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#map {
+	height: 100%;
+}
+</style>	
+
+		<h:inputText id="flats" value="#{FlatCatalogBean.toJson2()}"></h:inputText>
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script async="async" defer="defer"
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxyQRQ93FrXqxh7hBoycyCrFYheGbT1Q4&amp;callback=initMap"></script>
+
+
+		<script type='text/javascript'>
+		//<![CDATA[ 
+
+			var map;
+			function initMap() {
+				alert("gi");
+				var flatsString = $("#flats").val();
+				var flatsJson = JSON.parse(flatsString);
+				var count = 0;
+				var locations = [];
+				
+				flatsJson.forEach(function(element) {
+					var location = (element.location);
+					var lat = (element.lat);
+					var longi = (element.longi);
+					var flat = [ location, lat, longi, count ];
+					
+					locations.push(flat);
+					count++;
+				});
+
+				console.log(locations);
+
+				var map = new google.maps.Map(document.getElementById('map'), {
+					zoom : 13,
+					center : new google.maps.LatLng(53.3272728,-6.4098377),
+					mapTypeId : google.maps.MapTypeId.ROADMAP
+				});
+
+				var infowindow = new google.maps.InfoWindow({});
+
+				var marker;
+					
+				var i = 0;
+				flatsJson.forEach(function(element) {
+					
+					marker = new google.maps.Marker({
+						position : new google.maps.LatLng(locations[i][1],
+								locations[i][2]),
+						map : map
+					});	
+					
+					google.maps.event.addListener(marker, 'click',
+							(function(marker, i) {
+								return function() {
+									infowindow.setContent(locations[i][0]);
+									infowindow.open(map, marker);
+								}
+							})(marker, i));	
+					i++;
+				});			
+
+			}
+//			]]>			
+		</script>
+
+
+
 	</ui:define>
 </ui:composition>
+
+
+</html>
+
+
+<!-- 
 
 <p:commandLink action="#{FlatCatalogBean.toString()}" update="afterLoad" oncomplete="afterLoad()"/>
 <h:panelGroup id="afterLoad">
@@ -23,4 +106,8 @@
         
     </h:outputScript>
 </h:panelGroup>
-</html>
+ <h:outputScript library="javascript" name="2.js" target="head" />
+ -->
+
+
+

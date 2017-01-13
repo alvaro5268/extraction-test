@@ -17,11 +17,17 @@ public class MapsGoogle {
 
 	public Map<String, String> calculateLongandLati(String location) throws Exception {
 		GeocodingResult[] results = GeocodingApi
-				.geocode(this.context, "1600 Amphitheatre Parkway Mountain View, CA 94043").await();
+				.geocode(this.context, location).await();
 		// System.out.println(results[0].geometry.location.lat);
 		// System.out.println(results[0].geometry.location.lng);
-		double lat = results[0].geometry.location.lat;
-		double longi = results[0].geometry.location.lng;
+		double lat = 45.485434;
+		double longi = -36.54484;		
+		
+		if(results.length > 0){
+			lat = results[0].geometry.location.lat;
+			longi = results[0].geometry.location.lng;
+		}
+		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("lat", String.valueOf(lat));
 		map.put("longi", String.valueOf(longi));

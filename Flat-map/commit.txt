@@ -30,3 +30,6 @@ Create a simple google maps example that allow select multiple points.
 Create class Flat Catalog.
 Copy old classes in new project.
 Refactoring rename packages.
+
+#4
+Calculate latitude and longitude for every flats and send to UI.
